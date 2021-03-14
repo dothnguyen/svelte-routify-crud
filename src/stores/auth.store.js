@@ -1,4 +1,4 @@
-import { writable } from "svelte/store";
+import { derived, writable } from "svelte/store";
 import { BASE_URL, postData } from "../utils/http";
 
 let authState = {

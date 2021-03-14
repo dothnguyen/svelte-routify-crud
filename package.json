@@ -59,7 +59,6 @@
     ]
   },
   "dependencies": {
-    "@rbzl/svelte-form-control": "github:ribizli/svelte-form-control#publish",
     "spectre.css": "^0.5.9"
   }
 }

@@ -22,8 +22,19 @@
 		}
 	});
 
+	const asyncValidtor = async (value) => {
+		console.log("async validator");
+		return new Promise((resolve) =>
+			setTimeout(() => {
+				resolve(
+					value === "wayne@do.com" ? null : { serverError: true }
+				);
+			}, 2000)
+		);
+	};
+
 	const loginForm = new ControlGroup({
-		email: new Control("", [required, email]),
+		email: new Control("", [required, email, asyncValidtor]),
 		password: new Control("", [required, minLength(6)]),
 	});
 
@@ -62,6 +73,10 @@
 				/>
 				{#if $state.email.$touched && !$state.email.$valid}
 					<p class="form-input-hint">Please input valid email</p>
+				{/if}
+
+				{#if $state.email.$pending}
+					<p class="form-input-hint">Validating....</p>
 				{/if}
 			</div>
 			<div
