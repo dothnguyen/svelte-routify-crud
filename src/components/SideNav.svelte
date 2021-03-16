@@ -21,7 +21,7 @@
 			<ul class="sidemenu-submenu">
 				<li class="sidemenu-item">
 					<a
-						href={$url("/groups")}
+						href={$url("/customers")}
 						use:prefetch
 						title="Sub menu item 4"
 					>
