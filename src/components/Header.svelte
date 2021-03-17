@@ -12,10 +12,17 @@
 			href="#sidebar"
 			target="_self"
 			class="btn btn-link off-canvas-toggle"
+			on:click|preventDefault
 		>
 			<span class="icon icon-menu" />
 		</a>
 
+		<a
+			href="#"
+			class="btn btn-link sidemenu-toggle"
+			on:click|preventDefault={() => dispatch("sidenave-toggle")}
+			><span class="icon icon-menu" />
+		</a>
 		<a href={$url("/.")} class="navbar-brand mr-2">Spectre.css</a>
 		<a href={$url("/docs")} class="btn btn-link">Docs</a>
 		<!-- svelte-ignore a11y-invalid-attribute -->
@@ -43,5 +50,25 @@
 		background: rgba(247, 248, 249, 0.65);
 		left: 0;
 		z-index: 100;
+	}
+
+	@media (min-width: 960px) {
+		.sidemenu-toggle {
+			display: inline;
+		}
+
+		.off-canvas-toggle {
+			display: none;
+		}
+	}
+
+	@media (max-width: 960px) {
+		.sidemenu-toggle {
+			display: none;
+		}
+
+		.off-canvas-toggle {
+			display: inline;
+		}
 	}
 </style>

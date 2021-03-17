@@ -22,7 +22,10 @@
 	onDestroy(un);
 </script>
 
-<Header on:logout={() => authStore.logout()} />
+<Header
+	on:logout={() => authStore.logout()}
+	on:sidenave-toggle={() => (minimize = !minimize)}
+/>
 
 <div class="app-container off-canvas off-canvas-sidebar-show">
 	<SideMenu {minimize} />

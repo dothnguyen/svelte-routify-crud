@@ -15,6 +15,7 @@
 	@import "./../node_modules/spectre.css/src/spectre.scss";
 	@import "./../node_modules/spectre.css/src/spectre-exp.scss";
 	@import "./../node_modules/spectre.css/src/spectre-icons.scss";
+	@import "./../node_modules/font-awesome/scss/font-awesome.scss";
 
 	@import "../assets/global.css";
 </style>

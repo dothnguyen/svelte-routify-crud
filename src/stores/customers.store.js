@@ -20,7 +20,7 @@ const loadCustomers = async () => {
     }
 };
 
-export const customersService = {
+export const customers = {
     update,
     set,
     subscribe,
