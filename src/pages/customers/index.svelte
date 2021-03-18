@@ -3,10 +3,15 @@
 
 	import { onMount } from "svelte";
 
-	import { loading, error, customers } from "../../stores/customers.store";
+	import {
+		loading,
+		error,
+		customers,
+		initialized,
+	} from "../../stores/customers.store";
 
 	onMount(() => {
-		customers.loadCustomers();
+		if (!$initialized) customers.loadCustomers();
 	});
 </script>
 

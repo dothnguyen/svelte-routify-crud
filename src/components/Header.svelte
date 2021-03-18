@@ -9,10 +9,11 @@
 <header class="navbar app-navbar">
 	<section class="navbar-section">
 		<a
-			href="#sidebar"
+			href="#"
 			target="_self"
 			class="btn btn-link off-canvas-toggle"
-			on:click|preventDefault
+			on:click|preventDefault={() =>
+				dispatch("sidenav-off-canvas-toggle")}
 		>
 			<span class="icon icon-menu" />
 		</a>
@@ -20,7 +21,7 @@
 		<a
 			href="#"
 			class="btn btn-link sidemenu-toggle"
-			on:click|preventDefault={() => dispatch("sidenave-toggle")}
+			on:click|preventDefault={() => dispatch("sidenav-toggle")}
 			><span class="icon icon-menu" />
 		</a>
 		<a href={$url("/.")} class="navbar-brand mr-2">Spectre.css</a>

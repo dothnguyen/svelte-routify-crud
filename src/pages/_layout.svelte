@@ -15,22 +15,32 @@
 	});
 
 	let minimize = false;
+	let sidenavActive = false;
 	let outerWidth;
 
 	$: minimize = outerWidth <= 960 ? false : minimize;
+	$: sidenavActive = outerWidth > 960 ? false : sidenavActive;
 
 	onDestroy(un);
 </script>
 
+<svelte:window bind:outerWidth />
+
 <Header
 	on:logout={() => authStore.logout()}
-	on:sidenave-toggle={() => (minimize = !minimize)}
+	on:sidenav-toggle={() => (minimize = !minimize)}
+	on:sidenav-off-canvas-toggle={() => (sidenavActive = !sidenavActive)}
 />
 
 <div class="app-container off-canvas off-canvas-sidebar-show">
-	<SideMenu {minimize} />
+	<SideMenu {minimize} bind:active={sidenavActive} />
 	<!-- svelte-ignore a11y-missing-content -->
-	<a class="off-canvas-overlay" href="#close" target="_self" />
+	<a
+		class="off-canvas-overlay"
+		href="#close"
+		target="_self"
+		on:click|preventDefault={() => (sidenavActive = !sidenavActive)}
+	/>
 	<div class="off-canvas-content">
 		<div id="main-content">
 			<slot />

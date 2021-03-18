@@ -2,9 +2,15 @@
 	import { url, prefetch } from "@roxi/routify";
 
 	export let minimize = true;
+	export let active = false;
 </script>
 
-<div class="sidebar off-canvas-sidebar" class:minimize id="sidebar">
+<div
+	class="sidebar off-canvas-sidebar"
+	class:active
+	class:minimize
+	id="sidebar"
+>
 	<ul class="sidemenu">
 		<li class="sidemenu-item">
 			<a href={$url("./")} title="Home">

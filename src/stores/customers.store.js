@@ -3,6 +3,7 @@ import { BASE_URL, getData } from "../utils/http";
 
 export const loading = writable(false);
 export const error = writable(null);
+export const initialized = writable(false);
 
 let { update, set, subscribe } = writable([]);
 
@@ -14,6 +15,7 @@ const loadCustomers = async () => {
         await new Promise(resolve => setTimeout(resolve, 2000));
         loading.set(false);
         error.set(null);
+        initialized.set(true);
     } else {
         loading.set(false);
         error.set("Can not load groups at the moment. Please try again later.");
