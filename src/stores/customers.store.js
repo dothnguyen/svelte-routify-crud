@@ -1,5 +1,5 @@
 import { writable } from "svelte/store";
-import { BASE_URL, getData } from "../utils/http";
+import { BASE_URL, getData, postData } from "../utils/http";
 
 export const loading = writable(false);
 export const error = writable(null);
@@ -22,9 +22,21 @@ const loadCustomers = async () => {
     }
 };
 
+const addCustomer = async (customer) => {
+    const resp = await postData(`${BASE_URL}/customers`, customer);
+    if (resp.status === 200) {
+        var cust = await resp.json();
+        update((values) => [...values, cust]);
+        return true;
+    } else {
+        return false;
+    }
+};
+
 export const customers = {
     update,
     set,
     subscribe,
-    loadCustomers
+    loadCustomers,
+    addCustomer
 }

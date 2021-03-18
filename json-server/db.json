@@ -1,10 +1,25 @@
 {
-    "users": [
-        {
-            "email": "wayne@do.com",
-            "password": "$2a$10$78aV7YfIck.NGx7cWVjfveHcG1UoMhj1SwBmV9l0LKhMHlhOLM4ua",
-            "id": 1
-        }
-    ],
-    "customers": []
+  "users": [
+    {
+      "email": "wayne@do.com",
+      "password": "$2a$10$78aV7YfIck.NGx7cWVjfveHcG1UoMhj1SwBmV9l0LKhMHlhOLM4ua",
+      "id": 1
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "fname": "Wayne",
+      "lname": "Do",
+      "email": "do@a.com",
+      "mobile": null
+    },
+    {
+      "id": 2,
+      "fname": "Test",
+      "lname": "2332",
+      "email": "daa@ad.com",
+      "mobile": null
+    }
+  ]
 }
