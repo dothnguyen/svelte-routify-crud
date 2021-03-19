@@ -50,6 +50,8 @@
 		if (!customer.id) {
 			ret = customers.addCustomer(customer);
 			loading = false;
+		} else {
+			ret = customers.updateCustomer(customer);
 		}
 
 		if (ret) {

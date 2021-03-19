@@ -1,5 +1,5 @@
 <script>
-	import { url } from "@roxi/routify/runtime/helpers";
+	import { goto, url } from "@roxi/routify/runtime/helpers";
 
 	import { onMount } from "svelte";
 
@@ -10,7 +10,11 @@
 		initialized,
 	} from "../../stores/customers.store";
 
+	let customerList;
+	$: customerList = $customers;
+
 	onMount(() => {
+		console.log("customer list mount");
 		if (!$initialized) customers.loadCustomers();
 	});
 </script>
@@ -39,18 +43,32 @@
 			<th>Last Name</th>
 			<th>Email</th>
 			<th>Mobile</th>
+			<th>Actions</th>
 		</tr>
 	</thead>
 	<tbody>
-		{#if !$customers.length}
+		{#if !customerList.length}
 			<tr><td colspan="4">No customers.</td></tr>
 		{:else}
-			{#each $customers as cus}
+			{#each customerList as cus}
 				<tr>
 					<td>{cus.fname}</td>
 					<td>{cus.lname}</td>
 					<td>{cus.email}</td>
 					<td>{cus.mobile}</td>
+					<td>
+						<a
+							href="#"
+							on:click={() => $goto("./:id", { id: cus.id })}
+							><i class="fa fa-pencil" /></a
+						>
+						<a
+							href="#"
+							class="text-error"
+							on:click={() => customers.deleteCustomer(cus.id)}
+							><i class="fa fa-trash " /></a
+						>
+					</td>
 				</tr>
 			{/each}
 		{/if}
